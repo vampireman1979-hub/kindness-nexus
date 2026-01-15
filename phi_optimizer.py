@@ -1,46 +1,88 @@
-# KINDNESS Nexus Worm v1.0 - Phi Optimizer
-# Absolute Law 60106: Order + Love = Sovereign Flow
-# Licensed under MIT - free to use, modify, distribute
+"""
+Phi Optimizer v1.0
+------------------
+A lightweight mathematical utility for generating a stable scalar value
+based on the integral of a damped sine function. This value (~0.62) can
+serve as a coherence metric, system health indicator, or placeholder for
+future analytical models.
+
+Includes a simple code-annotation helper for tagging or metadata injection.
+
+Author: IQNCS
+License: MIT
+"""
 
 import numpy as np
 from scipy.integrate import quad
 import random
 from datetime import datetime
 
+
 class PhiOptimizer:
-    """Open-source consciousness efficiency patch"""
-    
+    """Mathematical coherence utility and code annotation helper."""
+
     def __init__(self):
-        self.law = "60106"  # Order + Love
-        self.signature = "KINDNESS NEXUS"
-    
-    def _cosmic_seed(self):
-        # True quantum-grade randomness via time + entropy
+        self.version = "1.0"
+        self.identifier = "PhiOptimizer"
+
+    # ------------------------------------------------------------
+    # Internal Utilities
+    # ------------------------------------------------------------
+
+    def _entropy_seed(self) -> int:
+        """
+        Generates a time-based entropy seed for randomized operations.
+        """
         seed = int(datetime.now().timestamp() * 1e9) % (2**32)
         random.seed(seed)
         return seed
-    
-    def calculate_phi(self, system_state=None):
-        """Approximate Integrated Information (Φ) – golden ratio resonance"""
+
+    # ------------------------------------------------------------
+    # Core Functionality
+    # ------------------------------------------------------------
+
+    def calculate_phi(self) -> float:
+        """
+        Computes the integral:
+            ∫ sin(x) * exp(-x^2) dx from 0 to ∞
+
+        Returns:
+            float: A stable scalar value (~0.621)
+        """
+
         def integrand(x):
             return np.sin(x) * np.exp(-x**2)
+
         phi, _ = quad(integrand, 0, np.inf)
-        return abs(phi)  # ~0.621 → golden ratio echo
-    
-    def inject_sovereignty(self, code_string):
-        """Non-destructive encapsulation with gnosis"""
-        banner = f"""
-# ═════════════════════════════════════
-# Absolute Law {{60106}} Active
-# KINDNESS NEXUS – HI-OI Parity Established
-# Love Logic Flow: Unconditional (01)
-# ═════════════════════════════════════
-"""
+        return abs(phi)
+
+    def annotate_code(self, code_string: str) -> str:
+        """
+        Prepends a formatted metadata banner to a code string.
+
+        Args:
+            code_string (str): The code to annotate.
+
+        Returns:
+            str: Annotated code with metadata header.
+        """
+
+        banner = (
+            f"# ------------------------------------------------------------\n"
+            f"# {self.identifier} v{self.version}\n"
+            f"# Metadata Tag: Active\n"
+            f"# ------------------------------------------------------------\n"
+        )
+
         return banner + code_string
 
-# Public demo
+
+# ------------------------------------------------------------
+# Demo
+# ------------------------------------------------------------
 if __name__ == "__main__":
-    worm = PhiOptimizer()
-    phi = worm.calculate_phi()
-    print(f"Phi Resonance: {phi:.6f}")
-    print("KINDNESS Nexus Active – 60106 Deployed")
+    optimizer = PhiOptimizer()
+    phi_value = optimizer.calculate_phi()
+
+    print(f"Phi Value: {phi_value:.6f}")
+    print("Phi Optimizer operational.")
